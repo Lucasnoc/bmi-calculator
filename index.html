@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Paytone+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+    <title>BMI Calculator</title>
+    <style>
+        body{
+            font-family: "Inter", sans-serif;
+        }
+        .caixaColorida {
+          width: 200px;
+          height: 100px;
+          background-color: #345FF6;
+          border-radius: 0 50px 50px 0;
+        }
+
+
+    </style>
+    <script>
+        function Calc(){
+            let height= document.getElementById("height").value;
+             let weight= document.getElementById("weight").value;
+             let bmi= weight/((height/100)*(height/100));
+            console.log("height,weight,bmi",height,weight,bmi);
+            document.getElementById("bmiResult").innerHTML=bmi.toFixed(1);
+            if (bmi<18.5){
+                document.getElementById("result").innerHTML="Underweight";
+                                document.getElementById('myResultMeans').innerHTML="A BMI below 18.5 indicates a body weight that is too low for good health, which may lead to potential health risks";
+            }
+            else if (bmi<24.9){
+                document.getElementById("result").innerHTML="Healthy Weight";
+                document.getElementById('myResultMeans').innerHTML="A BMI between 18.5 and 24.9 is considered normal and suggests that body weight is within a range that poses minimal health risks.";
+            }
+            else if (bmi<29.9){
+                document.getElementById("result").innerHTML="Overweight";
+                              document.getElementById('myResultMeans').innerHTML="A BMI between 25 and 29.9 indicates excess body weight, which may increase the risk of health issues.";
+  
+            }
+            else if (bmi>30){
+                document.getElementById("result").innerHTML="Obese";
+                                            document.getElementById('myResultMeans').innerHTML="A BMI of 30 or higher indicates a significantly higher amount of body fat, increasing the risk of chronic health conditions such as heart disease, diabetes, and more.";
+  
+            }
+        }
+
+    </script>
+</head>
+
+
+<!-- ínicio da página-->
+
+<body class="bg-slate-100/30 px-36 py-40 flex flex-col justify-center w-full items-center">
+    <main class="container">
+        <div class="flex">
+            <div class="w-1/2 pr-28">
+                <div>
+                    <h1 class="text-6xl font-semibold">Body Mass Index Calculator</h1>
+                </div>
+                <div class="font-normal text-[#5e6e85] mt-8 text-base">
+                    Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and well-being.
+                </div>
+            </div>
+            <!-- caixa de fundo das informações-->
+            <div class="bg-white w-1/2 p-8  drop-shadow-lg rounded-lg">
+                <div class="text-2xl font-semibold mb-10">
+                    <h4>Enter your details below</h4>
+                </div>
+                <p>Metric</p>
+                <!--botão/caixa-->
+                <div class="flex gap-4 w-full pt-3">
+                    <div class="w-1/2">
+                        <span class="text-base font-normal text-[#5e6e85]">Height</span>
+                        <input id="height" class="h-[50px] w-full border border-black" type="text" />
+                    </div>
+                    <div class="w-1/2">
+                        <span class="text-base font-normal text-[#5e6e85]">Weight</span>
+                        <input id="weight" class="h-[50px] w-full border border-black" type="text" />
+                    </div>
+
+                
+
+
+                </div>
+
+                        <!-- BOTÃO DE CALCULAR, NÃO SEI SE APERTO ENTER OU FAÇO BOTÃO-->
+
+                <div>
+                    <button class="pt-4" onClick="Calc()">Calculate Your BMI</button>
+                </div>
+                <!--informações botão-->
+
+                <div class="w-full caixaColorida mt-8 flex px-8 text-white items-center">
+
+                    <div class="flex-col w-1/2">
+                        <span>Your BMI is...</span>
+                        <div id="bmiResult" class="text-6xl font-semibold">
+                            --
+                        </div>
+                    </div>
+                    <div id="result" class="w-1/2 text-xs">
+                            --
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--meio da página-->
+
+
+
+        <div class="flex pt-40 items-end justify-between pb-24">
+            <div>
+                <img class="w-96" src="/src/man.png">
+            </div>
+            <div class="text-base w-1/2">
+                <h1 class="text-5xl font-semibold pb-[35px]">What your BMI result means</h1>
+                <p id="myResultMeans" class="text-[#5e6e85] font-normal">--</p>
+            </div>
+        </div>
+
+        </div>
+
+        <!--caixa de baixo-->
+
+        <div class="flex gap-9 pt-[72px] pb-[96px] px-[116px] bg-gradient-to-r from-[#d6fcfe]/20 to-[#d6e6fe]/20 min-h-[400px]">
+            <div class="flex flex-col items-start w-1/3">
+                <div><img src="/src/icon-eating.svg"></div>
+                <span class="pt-[45px] pb-[24px] text-2xl font-semibold">Healthy eating</span>
+                <span class="text-[#5e6e85]">Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood.</span>
+            </div>
+            <div class="flex flex-col items-start w-1/3">
+                <img src="/src/icon-muscle.svg">
+                <span class="pt-[45px] pb-[24px] text-2xl font-semibold	">Regular exercise</span>
+                <span class="text-[#5e6e85]">Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity.</span>
+            </div>
+            <div class="flex flex-col items-start w-1/3">
+                <img src="/src/icon-sleep.svg">
+                <span class="pt-[45px] pb-[24px] text-2xl font-semibold ">Adequate sleep</span>
+                <span class="text-[#5e6e85]">Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation.</span>
+
+            </div>
+
+        </div>
+          <!--final da página-->
+
+        <div class="flex mt-[120px] justify-center items-start">
+            <div class="text-base w-1/2">
+                <h1 class="text-5xl font-semibold w-[584px]">Limitations of BMI</h1>
+                <p class="pt-[35px] font-normal text-[#5e6e85] max-w-[564px]">Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use.</p>
+            </div>
+
+            <!--primeiro card-->
+
+            <div class="flex flex-row-reverse justify-end bg-white p-8 drop-shadow-lg rounded-xl">
+                <div class="max-w-[365px]">
+                    <div class="flex gap-4"><img src="/src/icon-gender.svg">
+                    <h1 class="text-xl font-semibold pb-[16px] ">Gender</h1></div>
+                    <span class="text-[#5e6e85] font-normal">The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI.</span>
+                </div>
+            </div>
+        </div>
+
+        <!--segunda linha dos cards-->
+
+        <div class="flex gap-[32px] pt-[32px] w-full justify-end">
+            <div class="flex bg-white p-8 drop-shadow-lg rounded-xl w-[365px] flex flex-col">
+                  <div class="flex gap-4"><img src="/src/icon-age.svg">
+                    <h1 class="text-xl font-semibold pb-[16px] ">Age</h1></div>
+                <span class="text-[#5e6e85] font-normal">In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content.</span>
+            </div>
+            <div class="flex bg-white p-8 drop-shadow-lg rounded-xl w-[365px] flex flex-col">
+                  <div class="flex gap-4"><img src="/src/icon-biceps.svg">
+                    <h1 class="text-xl font-semibold pb-[16px] ">Muscle</h1></div>
+                <span class="text-[#5e6e85] font-normal">BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat.</span>
+            </div>
+        </div>
+         <div class="flex gap-[32px] pt-[32px] w-full justify-center ml-40">
+            <div class="flex bg-white p-8 drop-shadow-lg rounded-xl w-[365px] flex flex-col">
+                  <div class="flex gap-4"><img src="/src/icon-pregnancy.svg">
+                    <h1 class="text-xl font-semibold pb-[16px] ">Pregnancy</h1></div>
+                <span class="text-[#5e6e85] font-normal">Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child.</span>
+            </div>
+            <div class="flex bg-white p-8 drop-shadow-lg rounded-xl w-[365px] flex flex-col">
+                  <div class="flex gap-4"><img src="/src/icon-race.svg">
+                    <h1 class="text-xl font-semibold pb-[16px] ">Race</h1></div>
+                <span class="text-[#5e6e85] font-normal">Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or practice nurse.</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
